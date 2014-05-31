@@ -51,6 +51,23 @@ public class GameTest
 		assertEquals(12, g.score());
 	}
 
+	@Test
+	public void testOneStrike()
+	{
+		rollStrike();
+		g.roll(3);
+		g.roll(4);
+		rollMany(16, 0);
+		assertEquals(24, g.score());
+	}
+
+	@Test
+	public void testPerfectGame()
+	{
+		rollMany(12, 10);
+		assertEquals(300, g.score());
+	}
+
 	private void rollMany(int n, int pins)
 	{
 		for (int i = 0; i < n; i++)
@@ -61,6 +78,11 @@ public class GameTest
 	{
 		g.roll(5);
 		g.roll(5);
+	}
+
+	private void rollStrike()
+	{
+		g.roll(10);
 	}
 
 }
